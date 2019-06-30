@@ -1,4 +1,3 @@
-[🎉 面试进阶专栏限时优惠](https://xiaozhuanlan.com/CyC2018)
 <!-- GFM-TOC -->
 * [一、概览](#一概览)
     * [Collection](#collection)
@@ -15,7 +14,6 @@
     * [ConcurrentHashMap](#concurrenthashmap)
     * [LinkedHashMap](#linkedhashmap)
     * [WeakHashMap](#weakhashmap)
-* [附录](#附录)
 * [参考资料](#参考资料)
 <!-- GFM-TOC -->
 
@@ -26,7 +24,7 @@
 
 ## Collection
 
-<div align="center"> <img src="pics/VP6n3i8W48Ptde8NQ9_0eSR5eOD6uqx.png"/> </div><br>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/73403d84-d921-49f1-93a9-d8fe050f3497.png" width="800px"> </div><br>
 
 ### 1. Set
 
@@ -52,7 +50,7 @@
 
 ## Map
 
-<div align="center"> <img src="pics/SoWkIImgAStDuUBAp2j9BKfBJ4vLy4q.png"/> </div><br>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/774d756b-902a-41a3-a3fd-81ca3ef688dc.png" width="500px"> </div><br>
 
 - TreeMap：基于红黑树实现。
 
@@ -67,7 +65,7 @@
 
 ## 迭代器模式
 
-<div align="center"> <img src="pics/SoWkIImgAStDuUBAp2j9BKfBJ4vLy0G.png"/> </div><br>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/93fb1d38-83f9-464a-a733-67b2e6bfddda.png" width="600px"> </div><br>
 
 Collection 继承了 Iterable 接口，其中的 iterator() 方法能够产生一个 Iterator 对象，通过这个对象就可以迭代遍历 Collection 中的元素。
 
@@ -112,9 +110,10 @@ List list = Arrays.asList(1, 2, 3);
 
 ## ArrayList
 
+
 ### 1. 概览
 
-实现了 RandomAccess 接口，因此支持随机访问。这是理所当然的，因为 ArrayList 是基于数组实现的。
+因为 ArrayList 是基于数组实现的，所以支持快速随机访问。RandomAccess 接口标识着该类支持快速随机访问。
 
 ```java
 public class ArrayList<E> extends AbstractList<E>
@@ -126,6 +125,8 @@ public class ArrayList<E> extends AbstractList<E>
 ```java
 private static final int DEFAULT_CAPACITY = 10;
 ```
+
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/52a7744f-5bce-4ff3-a6f0-8449334d9f3d.png" width="400px"> </div><br>
 
 ### 2. 扩容
 
@@ -388,7 +389,7 @@ transient Node<E> first;
 transient Node<E> last;
 ```
 
-<div align="center"> <img src="pics/49495c95-52e5-4c9a-b27b-92cf235ff5ec.png" width="500"/> </div><br>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/c8563120-cb00-4dd6-9213-9d9b337a7f7c.png" width="500px"> </div><br>
 
 ### 2. 与 ArrayList 的比较
 
@@ -408,9 +409,9 @@ transient Node<E> last;
 transient Entry[] table;
 ```
 
-Entry 存储着键值对。它包含了四个字段，从 next 字段我们可以看出 Entry 是一个链表。即数组中的每个位置被当成一个桶，一个桶存放一个链表。HashMap 使用拉链法来解决冲突，同一个链表中存放哈希值相同的 Entry。
+Entry 存储着键值对。它包含了四个字段，从 next 字段我们可以看出 Entry 是一个链表。即数组中的每个位置被当成一个桶，一个桶存放一个链表。HashMap 使用拉链法来解决冲突，同一个链表中存放哈希值和散列桶取模运算结果相同的 Entry。
 
-<div align="center"> <img src="pics/8fe838e3-ef77-4f63-bf45-417b6bc5c6bb.png" width="600"/> </div><br>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/9420a703-1f9d-42ce-808e-bcb82b56483d.png" width="550px"> </div><br>
 
 ```java
 static class Entry<K,V> implements Map.Entry<K,V> {
@@ -486,7 +487,7 @@ map.put("K3", "V3");
 - 计算键值对所在的桶；
 - 在链表上顺序查找，时间复杂度显然和链表的长度成正比。
 
-<div align="center"> <img src="pics/49d6de7b-0d0d-425c-9e49-a1559dc23b10.png" width="600"/> </div><br>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/e0870f80-b79e-4542-ae39-7420d4b0d8fe.png" width="550px"> </div><br>
 
 ### 3. put 操作
 
@@ -822,7 +823,7 @@ final Segment<K,V>[] segments;
 static final int DEFAULT_CONCURRENCY_LEVEL = 16;
 ```
 
-<div align="center"> <img src="pics/3fdfc89d-719e-4d93-b518-29fa612b3b18.png"/> </div><br>
+<div align="center"> <img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/db808eff-31d7-4229-a4ad-b8ae71870a3a.png" width="550px"> </div><br>
 
 ### 2. size 操作
 
@@ -1093,90 +1094,6 @@ public final class ConcurrentCache<K, V> {
 }
 ```
 
-# 附录
-
-Collection 绘图源码：
-
-```
-@startuml
-
-interface Collection
-interface Set
-interface List
-interface Queue
-interface SortSet
-
-class HashSet
-class LinkedHashSet
-class TreeSet
-class ArrayList
-class Vector
-class LinkedList
-class PriorityQueue
-
-
-Collection <|-- Set
-Collection <|-- List
-Collection <|-- Queue
-Set <|-- SortSet
-
-Set <|.. HashSet
-Set <|.. LinkedHashSet
-SortSet <|.. TreeSet
-List <|.. ArrayList
-List <|.. Vector
-List <|.. LinkedList
-Queue <|.. LinkedList
-Queue <|.. PriorityQueue
-
-@enduml
-```
-
-Map 绘图源码
-
-```
-@startuml
-
-interface Map
-interface SortMap
-
-class HashTable
-class LinkedHashMap
-class HashMap
-class TreeMap
-
-Map <|.. HashTable
-Map <|.. LinkedHashMap
-Map <|.. HashMap
-Map <|-- SortMap
-SortMap <|.. TreeMap
-
-@enduml
-```
-
-迭代器类图
-
-```
-@startuml
-
-interface Iterable
-interface Collection
-interface List
-interface Set
-interface Queue
-interface Iterator
-interface ListIterator
-
-Iterable <|-- Collection
-Collection <|.. List
-Collection <|.. Set
-Collection <|-- Queue
-Iterator <-- Iterable
-Iterator <|.. ListIterator
-ListIterator <-- List
-
-@enduml
-```
 
 # 参考资料
 
@@ -1192,3 +1109,14 @@ ListIterator <-- List
 - [Java 集合细节（二）：asList 的缺陷](http://wiki.jikexueyuan.com/project/java-enhancement/java-thirtysix.html)
 - [Java Collection Framework – The LinkedList Class](http://javaconceptoftheday.com/java-collection-framework-linkedlist-class/)
 
+
+
+
+
+# 微信公众号
+
+
+更多精彩内容将发布在微信公众号 CyC2018 上，你也可以在公众号后台和我交流学习和求职相关的问题。另外，公众号提供了该项目的 PDF 等离线阅读版本，后台回复 "下载" 即可领取。公众号也提供了一份技术面试复习大纲，不仅系统整理了面试知识点，而且标注了各个知识点的重要程度，从而帮你理清多而杂的面试知识点，后台回复 "大纲" 即可领取。我基本是按照这个大纲来进行复习的，对我拿到了 BAT 头条等 Offer 起到很大的帮助。你们完全可以和我一样根据大纲上列的知识点来进行复习，就不用看很多不重要的内容，也可以知道哪些内容很重要从而多安排一些复习时间。
+
+
+<br><div align="center"><img width="320px" src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/other/公众号海报.png"></img></div>
